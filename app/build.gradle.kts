@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -36,4 +37,14 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation("androidx.recyclerview:recyclerview:1.3.2")
+
+    // Firebase BOM (manages all Firebase versions)
+    implementation(platform("com.google.firebase:firebase-bom:33.1.0"))
+
+    // Firebase Auth
+    implementation("com.google.firebase:firebase-auth-ktx")
+
+    // Firestore (replaces SQLite for user data)
+    implementation("com.google.firebase:firebase-firestore-ktx")
+
 }

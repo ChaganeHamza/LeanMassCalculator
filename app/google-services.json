@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "886512143010",
+    "project_id": "leanmasscalculator-bdf73",
+    "storage_bucket": "leanmasscalculator-bdf73.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:886512143010:android:78630c4e78b0bc538f65fb",
+        "android_client_info": {
+          "package_name": "com.example.leanmass"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7VXFOvDMdn4Q6Aw2PqA3KX7m3nxsoj4E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

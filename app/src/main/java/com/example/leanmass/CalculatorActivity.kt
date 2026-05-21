@@ -5,22 +5,21 @@ import android.os.Bundle
 import android.widget.RadioButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.leanmass.data.DatabaseHelper
-import com.example.leanmass.data.LbmRecord
 import com.example.leanmass.databinding.ActivityCalculatorBinding
 import com.example.leanmass.utils.AuthManager
 import com.example.leanmass.utils.LbmCalculator
+import com.google.firebase.firestore.FirebaseFirestore
+import java.util.Date
 
 class CalculatorActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCalculatorBinding
-    private lateinit var db: DatabaseHelper
+    private val firestore = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCalculatorBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        db = DatabaseHelper(this)
 
         binding.btnCalculate.setOnClickListener { calculate() }
 
@@ -29,7 +28,7 @@ class CalculatorActivity : AppCompatActivity() {
         }
 
         binding.btnLogout.setOnClickListener {
-            AuthManager.logout(this)
+            AuthManager.logout()                              // ✅ no param
             startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }
@@ -38,6 +37,7 @@ class CalculatorActivity : AppCompatActivity() {
     private fun calculate() {
         val weightStr = binding.etWeight.text.toString()
         val heightStr = binding.etHeight.text.toString()
+
         if (weightStr.isBlank() || heightStr.isBlank()) {
             Toast.makeText(this, "Remplissez poids et taille", Toast.LENGTH_SHORT).show()
             return
@@ -48,16 +48,29 @@ class CalculatorActivity : AppCompatActivity() {
             Toast.makeText(this, "Valeurs invalides", Toast.LENGTH_SHORT).show()
             return
         }
+
         val selectedId = binding.radioGroupGender.checkedRadioButtonId
         val gender = findViewById<RadioButton>(selectedId).text.toString()
         val lbm = LbmCalculator.calculate(gender, weight, height)
         val ok  = LbmCalculator.isSatisfactory(gender, lbm)
 
-        db.insertRecord(LbmRecord(
-            userId = AuthManager.currentUserId(this),
-            gender = gender, weight = weight,
-            height = height, lbm = lbm, isSatisfactory = ok
-        ))
+        // ✅ Save to Firestore instead of SQLite
+        val uid = AuthManager.getCurrentUserId()
+        if (uid != null) {
+            val record = hashMapOf(
+                "userId"          to uid,
+                "gender"          to gender,
+                "weight"          to weight,
+                "height"          to height,
+                "lbm"             to lbm,
+                "isSatisfactory"  to ok,
+                "date"            to Date()
+            )
+            firestore.collection("records").add(record)
+                .addOnFailureListener {
+                    Toast.makeText(this, "Erreur sauvegarde: ${it.message}", Toast.LENGTH_SHORT).show()
+                }
+        }
 
         startActivity(Intent(this, ResultActivity::class.java).apply {
             putExtra("LBM", lbm)
