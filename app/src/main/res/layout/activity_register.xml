@@ -1,70 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="32dp"
-    android:gravity="center_vertical">
+    android:gravity="center_vertical"
+    android:paddingStart="24dp"
+    android:paddingEnd="24dp"
+    android:paddingTop="40dp"
+    android:paddingBottom="24dp"
+    android:background="#FFFFFF">
 
+    <!-- Title -->
     <TextView
-        android:text="Inscription"
-        android:textSize="24sp"
-        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"/>
+        android:text="Inscription"
+        android:textColor="#111827"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:letterSpacing="0.01"
+        android:layout_marginBottom="8dp" />
 
+    <!-- Subtitle -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Créez votre compte pour commencer"
+        android:textColor="#6B7280"
+        android:textSize="15sp"
+        android:layout_marginBottom="32dp" />
+
+    <!-- Full Name -->
     <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="18dp"
         android:hint="Nom complet"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_marginBottom="16dp">
+        app:boxBackgroundMode="outline"
+        app:boxCornerRadiusTopStart="16dp"
+        app:boxCornerRadiusTopEnd="16dp"
+        app:boxCornerRadiusBottomStart="16dp"
+        app:boxCornerRadiusBottomEnd="16dp"
+        app:boxStrokeColor="#1D9E75"
+        app:hintTextColor="#6B7280">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etName"
-            android:inputType="textPersonName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:textColor="#111827"
+            android:textSize="16sp"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!-- Email -->
     <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="18dp"
         android:hint="Adresse e-mail"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_marginBottom="16dp">
+        app:boxBackgroundMode="outline"
+        app:boxCornerRadiusTopStart="16dp"
+        app:boxCornerRadiusTopEnd="16dp"
+        app:boxCornerRadiusBottomStart="16dp"
+        app:boxCornerRadiusBottomEnd="16dp"
+        app:boxStrokeColor="#1D9E75"
+        app:hintTextColor="#6B7280">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etEmail"
-            android:inputType="textEmailAddress"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:textColor="#111827"
+            android:textSize="16sp"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!-- Password -->
     <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
         android:hint="Mot de passe"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_marginBottom="24dp">
+        app:endIconMode="password_toggle"
+        app:boxBackgroundMode="outline"
+        app:boxCornerRadiusTopStart="16dp"
+        app:boxCornerRadiusTopEnd="16dp"
+        app:boxCornerRadiusBottomStart="16dp"
+        app:boxCornerRadiusBottomEnd="16dp"
+        app:boxStrokeColor="#1D9E75"
+        app:hintTextColor="#6B7280">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etPassword"
-            android:inputType="textPassword"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:textColor="#111827"
+            android:textSize="16sp"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!-- Register Button -->
     <Button
         android:id="@+id/btnRegister"
-        android:text="Créer mon compte"
-        android:backgroundTint="#1D9E75"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"/>
+        android:layout_height="56dp"
+        android:layout_marginBottom="14dp"
+        android:text="Créer mon compte"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#1D9E75"
+        android:elevation="2dp" />
 
+    <!-- Login Redirect Button -->
     <Button
         android:id="@+id/btnGoLogin"
-        android:text="Déjà un compte ? Se connecter"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="56dp"
+        android:text="Déjà un compte ? Se connecter"
+        android:textAllCaps="false"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="#1D9E75"
+        app:strokeColor="#1D9E75"
+        app:strokeWidth="1dp"
+        app:cornerRadius="16dp" />
+
 </LinearLayout>

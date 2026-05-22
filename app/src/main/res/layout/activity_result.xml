@@ -1,54 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:padding="32dp">
+    android:paddingStart="24dp"
+    android:paddingEnd="24dp"
+    android:paddingTop="40dp"
+    android:paddingBottom="24dp"
+    android:background="#FFFFFF">
 
+    <!-- Status Icon -->
     <ImageView
         android:id="@+id/ivStatus"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginBottom="16dp"
-        android:contentDescription="Statut du résultat"/>
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginBottom="20dp"
+        android:contentDescription="Statut du résultat"
+        android:scaleType="centerInside" />
 
+    <!-- Result Value -->
     <TextView
         android:id="@+id/tvLbmValue"
-        android:textSize="40sp"
-        android:textStyle="bold"
-        android:textColor="#111111"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:text="Lean Body Mass"
-        android:textSize="13sp"
-        android:textColor="#6B7280"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"/>
+        android:textSize="48sp"
+        android:textStyle="bold"
+        android:textColor="#111827"
+        android:letterSpacing="-0.02"
+        android:layout_marginBottom="6dp" />
 
+    <!-- Label -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lean Body Mass"
+        android:textSize="14sp"
+        android:textColor="#6B7280"
+        android:layout_marginBottom="10dp" />
+
+    <!-- Status Text -->
     <TextView
         android:id="@+id/tvStatusText"
-        android:textSize="16sp"
-        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"/>
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="#374151"
+        android:layout_marginBottom="36dp" />
 
-    <Button
+    <!-- Primary Button -->
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnHistory"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginBottom="14dp"
         android:text="Voir l'historique"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
         android:backgroundTint="#1D9E75"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"/>
+        android:elevation="2dp"
+        app:cornerRadius="16dp" />
 
-    <Button
+    <!-- Secondary Button -->
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnNewCalc"
-        android:text="Nouveau calcul"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="56dp"
+        android:text="Nouveau calcul"
+        android:textAllCaps="false"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="#1D9E75"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        app:strokeColor="#1D9E75"
+        app:strokeWidth="1dp"
+        app:cornerRadius="16dp" />
+
 </LinearLayout>
